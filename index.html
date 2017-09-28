@@ -13,12 +13,12 @@
     <form action="">
       <div class="row search">
         <div class="col-xs-12 containerSearch">
-              <input type="text"  placeholder="Please enter a search term">
+              <input type="text"  placeholder="Please enter a search term" id="search" value="">
         </div>
       </div>
       <div class="row blockButt">
         <div class="col-xs-offset-1 col-xs-5">
-          <button class="butt butt1" >Search</button>
+          <input type="submit" class="butt butt1">
         </div>
         <div class=" col-xs-5">
           <button class="butt butt2" id="buttRandom">Random</button>
@@ -36,12 +36,34 @@
     buttRandom.addEventListener('click', getRandomURL);
     
   
-    const api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+    const api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&origin=*&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+  
     
     const article = [];
-    fetch(api)
-      .then(blob => blob.json())
-      .then(data => cities.push(...data));
+
+    function getObj(query) {
+      var urlString = api + query;
+      var xhr = new XMLHttpRequest ();
+      xhr.open('GET', urlString);
+      xhr.onload = function(evt) {
+        var rawData = evt.target.response;
+        loaderObj = JSON.parse(rawData);
+
+        getPage(loaderObj.query.pages);
+        }
+      xhr.send();
+    };
+    
+     getObj('hello');
+    
+    function getPage(articleP) {
+      for(var key in articleP){
+        article.push(articleP[key]);
+      }
+    }
+    
+    var text = document.getElementsByTagName("input").value;
+    console.log(text);
     
     
     
