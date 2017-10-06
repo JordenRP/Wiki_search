@@ -16,9 +16,15 @@ input {
   border: 1px solid #c1c1c1;
 }
 
+h3 {
+  margin-top: 10px;
+}
+
 .search {
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 240px;
+  transition-property: margin-top;
+  transition-duration: 2s;
   
 }
 
@@ -38,7 +44,7 @@ input::placeholder {
 :focus:-ms-input-placeholder {
   color: transparent
 }
-input[type="search"]:focus { 
+input[type="text"]:focus { 
   outline: none;
   box-shadow: 0 3px 2px 1px rgba(0,0,0,0.2);  
 }
@@ -64,6 +70,36 @@ input[type="search"]:focus {
   padding-top: 2px;
 }
 
+
+.list {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 100px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 1px rgba(0,0,0,0.2);  
+  text-decoration: none;
+  color: black;
+}
+
+.list:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.list:link {
+  text-decoration: none;
+  color: black;
+}
+
+.list > p {
+  color: #605F5C;
+}
+
+.list > h3:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 520px) {
   .butt {
   width: 144px;
@@ -74,9 +110,14 @@ input[type="search"]:focus {
     float: right;
   }
   
+  .containerList {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
    .containerSearch {
-  padding-left: 15%;
-  padding-right: 15%;
+    padding-left: 15%;
+    padding-right: 15%;
   }
 }
 }
